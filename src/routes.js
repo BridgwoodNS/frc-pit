@@ -6,6 +6,7 @@ import PageNotFound from './pages/PageNotFound';
 import SignedIn from './pages/SignedIn';
 import SignOut from './pages/SignOut';
 import Statistics from './pages/Statistics';
+import Gallery from './pages/Gallery';
 
 export default [
   {
@@ -42,6 +43,13 @@ export default [
     path: '/stats',
     component: Statistics,
     exact: true
+  },
+
+  {
+    path: '/gallery',
+    component: Gallery,
+    exact: true
+
   },
   {
     component: PageNotFound,

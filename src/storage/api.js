@@ -82,7 +82,10 @@ export async function pullFromTBA() {
     var cache = cache_instance.get();
 
     // list of events
-    promises.push(fetch(TBA_BASE_URL + "/events/" + (new Date()).getFullYear() + "/simple", FETCH_CONFIG)
+    // delete dateForComp and repleace dateForComp with new Date().getFullYear()
+    let dateForComp = new Date().getFullYear() - 1;
+    console.log(dateForComp);
+    promises.push(fetch(TBA_BASE_URL + "/events/" + dateForComp + "/simple", FETCH_CONFIG)
         .then(res => res.json())
         .then((result) => {
             cache.events.list = [];
@@ -93,8 +96,12 @@ export async function pullFromTBA() {
                 end_of_event_date.setMonth(parseInt(result[i].end_date.substring(5, 7)) - 1);
                 end_of_event_date.setDate(result[i].end_date.substring(8, 10));
 
-                if (new Date() <= end_of_event_date) {
-                    cache.events.list.push(result[i]);
+                // this should also be changed back to new Date
+                if (dateForComp <= end_of_event_date) {
+                    if (result[i].state_prov == "NY" && (result[i].event_code == "nyli" || result[i].event_code == "nytr" || result[i].event_code == "nyny")) {
+                        console.log(result[i]);
+                        cache.events.list.push(result[i]);
+                    }
                 }
             }
 

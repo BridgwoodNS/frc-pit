@@ -97,20 +97,22 @@ export default class Header extends Component {
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href={process.env.PUBLIC_URL}>FRC Pit</a>
+          <a className="navbar-brand" href={process.env.PUBLIC_URL}>RoboGym</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav">
-              <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL}><i className="fa fa-home" aria-hidden="true"></i> Home</a></li>
-              <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "/#/tools_list"}><i className="fa fa-wrench" aria-hidden="true"></i> Tools List</a></li>
-              <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "/#/check_out_tool"}><i className="fa fa-plus" aria-hidden="true"></i> Check Out Tool</a></li>
-              <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "/#/stats"}><i className="fa fa-chart-area" aria-hidden="true"></i> Stats</a></li>
+              <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "#/?event=2023nyny&showWebcasts=true"}><i className="fa fa-home" aria-hidden="true"></i> Home</a></li>
+              {/* <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "/#/tools_list"}><i className="fa fa-wrench" aria-hidden="true"></i> Tools List</a></li> */}
+              {/* <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "/#/check_out_tool"}><i className="fa fa-plus" aria-hidden="true"></i> Check Out Tool</a></li> */}
+              <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "/#/stats?event=2023nyny"}><i className="fa fa-chart-area" aria-hidden="true"></i> Stats</a></li>
+              <li className="nav-item"><a className="nav-link" href={process.env.PUBLIC_URL + "/#/gallery"}><i className="fa fa-image" aria-hidden="true"></i> Gallery</a></li>
+
             </ul>
             <form className="form-inline settings" action="javascript:void(0);" onSubmit={this.setTeamNumberAndEvent}>
-              <select className="form-control mr-sm-2 settings-event" style={{ display: showSettings ? "block" : "none" }} defaultValue={event || ""}>{eventOptions}</select>
-              <input className="form-control mr-sm-2 settings-team" placeholder="Team Number" type="number" style={{ display: showTeamSettings ? "block" : "none" }} defaultValue={showTeamSettings && team ? parseInt(team.substring(3)) : ""}/>
+              <select className="form-control mr-sm-2 settings-event" style={{ display: showSettings ? "block" : "none" }}  onChange = {this.setTeamNumberAndEvent} defaultValue={event || ""}>{eventOptions}</select>
+              <input className="form-control mr-sm-2 settings-team"  placeholder="Team Number" type="number" style={{ display: showTeamSettings ? "block" : "none" }} defaultValue={showTeamSettings && team ? parseInt(team.substring(3)) : ""}/>
               <input type="button" className="btn btn-success set-team-number-and-event-btn my-2 my-sm-0" value="✓" onClick={this.setTeamNumberAndEvent} style={{ display: showSettings ? "block" : "none" }} />
               <input type="button" className="btn btn-secondary disable-webcast-button my-2 my-sm-0" value="Toggle Webcasts" style={{ display: showTeamSettings ? "block" : "none", marginLeft: "5px" }} onClick={this.toggleWebcast} />
             </form>

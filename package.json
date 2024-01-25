@@ -2,7 +2,7 @@
   "name": "frc-pit",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://sumigovindaraju.github.io/frc-pit",
+  "homepage": ".",
   "dependencies": {
     "firebase": "^9.6.8",
     "object-sizeof": "^1.6.0",

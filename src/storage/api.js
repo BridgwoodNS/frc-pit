@@ -98,7 +98,7 @@ export async function pullFromTBA() {
 
                 // this should also be changed back to new Date
                 if (new Date() <= end_of_event_date) {
-                    if (result[i].state_prov == "NY" ) {
+                    if (true ) {
                         console.log(result[i]);
                         cache.events.list.push(result[i]);
                     }

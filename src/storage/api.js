@@ -97,8 +97,8 @@ export async function pullFromTBA() {
                 end_of_event_date.setDate(result[i].end_date.substring(8, 10));
 
                 // this should also be changed back to new Date
-                if (dateForComp <= end_of_event_date) {
-                    if (result[i].state_prov == "NY" && (result[i].event_code == "nyli" || result[i].event_code == "nyny")) {
+                if (new Date() <= end_of_event_date) {
+                    if (result[i].state_prov == "NY" ) {
                         console.log(result[i]);
                         cache.events.list.push(result[i]);
                     }

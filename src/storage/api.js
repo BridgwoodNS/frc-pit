@@ -83,7 +83,7 @@ export async function pullFromTBA() {
 
     // list of events
     // delete dateForComp and repleace dateForComp with new Date().getFullYear()
-    let dateForComp = new Date().getFullYear() - 1;
+    let dateForComp = new Date().getFullYear();
     console.log(dateForComp);
     promises.push(fetch(TBA_BASE_URL + "/events/" + dateForComp + "/simple", FETCH_CONFIG)
         .then(res => res.json())
@@ -98,7 +98,7 @@ export async function pullFromTBA() {
 
                 // this should also be changed back to new Date
                 if (dateForComp <= end_of_event_date) {
-                    if (result[i].state_prov == "NY" && (result[i].event_code == "nyli" || result[i].event_code == "nytr" || result[i].event_code == "nyny")) {
+                    if (result[i].state_prov == "NY" && (result[i].event_code == "nyli" || result[i].event_code == "nyny")) {
                         console.log(result[i]);
                         cache.events.list.push(result[i]);
                     }

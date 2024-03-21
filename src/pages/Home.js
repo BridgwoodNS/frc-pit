@@ -24,7 +24,6 @@ export default class Home extends Component {
           <div>
             <ScheduleAndRankings />
             <Webcasts />
-            <Awards />
             <Countdown /></div>}
       </div>
     );
